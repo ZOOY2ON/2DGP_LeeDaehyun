@@ -1,52 +1,59 @@
 from pico2d import *
-
 open_canvas()
 grass = load_image('grass.png')
 character = load_image('animation_sheet.png')
 
-# 초기 위치 및 상태 변수 설정
-x, y = 50, 90
-move = True
-way = ['Right', 'Up', 'Left', 'Down']
-image_bottom = {'Right': 100, 'Up': 300, 'Left': 0, 'Down': 200}
+x = 50
+y = 90
+
 frame = 0
 
-# 이동 경로 정의: 오른쪽, 위, 왼쪽, 아래 순서로 움직임
-waypoints = [(750, 90), (750, 550), (50, 550), (50, 90)]
+while(True):
 
-i = 0  # 방향 리스트의 인덱스 변수
-T_or_F = True
-
-while T_or_F:
-
-    movepoint = (x, y)
-
-    #print(x,y)
-    print(movepoint)
-    print(waypoints[i])
-
-    if movepoint != waypoints[i]:
+    while(x < 750):
         clear_canvas()
         grass.draw(400, 30)
-        character.clip_draw(frame * 100, image_bottom[way[i]], 100, 100, x, y)
+        character.clip_draw(frame*100, 100, 100, 100, x, 90)
         update_canvas()
         frame = (frame + 1) % 8
-        if x >= 800:
-            T_or_F = False
-        else :
-            if way[i] == 'Right':
-                x += 5
-            elif way[i] == 'Up':
-                y += 5
-            elif way[i] == 'Left':
-                x -= 5
-            elif way[i] == 'Down':
-                y -= 5
-            else:
-                print('Error')
+        x += 5
         delay(0.05)
-    elif movepoint == waypoints[i]:
-        print("===========change=================")
-        i = (i + 1) % 4  # 다음 방향으로 이동
+        get_events()
+
+    frame = 0
+
+    while(y < 550):
+        clear_canvas()
+        grass.draw(400, 30)
+        character.clip_draw(frame*100, 300, 100, 100, 750, y)
+        update_canvas()
+        frame = (frame + 1) % 8
+        y += 5
+        delay(0.05)
+        get_events()
+
+    frame = 0
+
+    while(x > 50):
+        clear_canvas()
+        grass.draw(400, 30)
+        character.clip_draw(frame*100, 0, 100, 100, x, 550)
+        update_canvas()
+        frame = (frame + 1) % 8
+        x -= 5
+        delay(0.05)
+        get_events()
+
+    frame = 0
+
+    while(y > 90):
+        clear_canvas()
+        grass.draw(400, 30)
+        character.clip_draw(frame*100, 200, 100, 100, 50, y)
+        update_canvas()
+        frame = (frame + 1) % 8
+        y -= 5
+        delay(0.05)
+        get_events()
 
 close_canvas()
