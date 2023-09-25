@@ -1,0 +1,16 @@
+플리커링 : 눈에 이미지의 변화가 축적되면서 화면이 지워지는 장면이 잔상처럼 남아 보이는 현상
+
+화면 2개(main buffer : 화면에 연결 / Back buffer : 임시)
+- Back buffer에 이미지 생성
+- Back buffer와 main buffer를 바꿈
+- 플리커링 없이 화면 전환 가능(지우는 과정이 없기 때문에)
+
+워킹 디렉토리 설정
+
+import os
+os.chdir('C:\\Users\\ZOOY2ON\\Desktop\\2023\\2023_02\\2DGP\\2DGP_LeeDaehyun\\2023.09.25')
+os.getcwd()
+'C:\\Users\\ZOOY2ON\\Desktop\\2023\\2023_02\\2DGP\\2DGP_LeeDaehyun\\2023.09.25'
+
+파이참 - 파이썬 연결
+settings - python interpreter - 파이썬 연결 확인
